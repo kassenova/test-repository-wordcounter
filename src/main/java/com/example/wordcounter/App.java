@@ -1,5 +1,10 @@
 package com.example.wordcounter;
 
+import java.util.List;
+
+import org.apache.commons.text.StrMatcher;
+import org.apache.commons.text.StrTokenizer;
+
 public class App 
 {
     public static void main( String[] args )
@@ -8,6 +13,8 @@ public class App
     }
     
     public static int wordcount(String s) {
-        return 0;
+    	StrMatcher delim = StrMatcher.charSetMatcher(" ()\n\r\t/!,:;._-");
+		List<String> tokens = new StrTokenizer(s, delim).getTokenList();
+		return tokens.size();
     }
 }
